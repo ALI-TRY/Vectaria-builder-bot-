@@ -1,27 +1,33 @@
-# Vectaria Builder Bot - Castle Planner
+# Vectaria Castle Builder Plan
 
-def build_castle(width, height):
-    print("🏰 بدء بناء القصر...")
-    
-    for floor in range(height):
-        print(f"بناء الطابق {floor+1}")
-        
-    print("🛡️ تم الانتهاء من القصر!")
+castle = {
+    "name": "القصر الملكي",
+    "size": "40x32",
+    "floors": 2,
+    "rooms": [
+        "قاعة العرش",
+        "غرفة النوم",
+        "المكتبة",
+        "غرفة الطعام"
+    ],
+    "towers": 4
+}
 
-def build_big_city():
-    print("🏙️ بناء مدينة كبيرة...")
-    
-    buildings = [
-        "قصر ملكي",
-        "برج عالي",
-        "بيت كبير",
-        "سور المدينة"
-    ]
 
-    for b in buildings:
-        print("يبني:", b)
+def show_build_plan():
 
-    print("✅ انتهى البناء")
+    print("🏰", castle["name"])
+    print("📏 الحجم:", castle["size"])
+    print("🏢 الطوابق:", castle["floors"])
 
-build_castle(50, 10)
-build_big_city()
+    print("\n🛏️ الغرف:")
+
+    for room in castle["rooms"]:
+        print("➡️", room)
+
+    print("\n🗼 الأبراج:", castle["towers"])
+
+    print("\n✅ المخطط جاهز للبناء")
+
+
+show_build_plan()
