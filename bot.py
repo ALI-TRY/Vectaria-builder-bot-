@@ -1,5 +1,11 @@
 # 🏰 Vectaria Castle Builder Bot
 
+start_position = {
+    "x": 9903,
+    "y": 464,
+    "z": 41195
+}
+
 castle = {
     "name": "القصر الملكي",
     "width": 40,
@@ -12,46 +18,51 @@ blocks = []
 
 def place_block(x, y, z, block):
     blocks.append({
+        "block": block,
         "x": x,
         "y": y,
-        "z": z,
-        "block": block
+        "z": z
     })
 
 
 def build_castle():
 
-    print("🏰 بدأ تجهيز القصر")
+    print("🏰 بناء:", castle["name"])
 
     # الأرضية
     for x in range(castle["width"]):
         for z in range(castle["length"]):
-            place_block(x,0,z,"حجر")
+
+            place_block(
+                start_position["x"] + x,
+                start_position["y"],
+                start_position["z"] + z,
+                "حجر"
+            )
+
 
     # الجدران
     for y in range(1, castle["height"]):
 
         for x in range(castle["width"]):
-            place_block(x,y,0,"حجر")
-            place_block(x,y,castle["length"],"حجر")
 
-        for z in range(castle["length"]):
-            place_block(0,y,z,"حجر")
-            place_block(castle["width"],y,z,"حجر")
+            place_block(
+                start_position["x"] + x,
+                start_position["y"] + y,
+                start_position["z"],
+                "حجر"
+            )
 
 
-    print("🗼 إضافة الأبراج")
+    # برج
+    for y in range(1,15):
 
-    towers = [
-        (0,0),
-        (40,0),
-        (0,32),
-        (40,32)
-    ]
-
-    for x,z in towers:
-        for y in range(1,15):
-            place_block(x,y,z,"برج")
+        place_block(
+            start_position["x"],
+            start_position["y"] + y,
+            start_position["z"],
+            "برج"
+        )
 
 
     print("✅ القصر جاهز")
